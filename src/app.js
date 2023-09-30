@@ -128,7 +128,7 @@ router.post(
     const browser = await getBrowser();
     const page = await browser.newPage();
 
-    await page.setContent(body.html, { waitUntil: "load" });
+    await page.setContent(body.html, { waitUntil: "networkidle0" });
     ctx.body = await page.pdf(body.export);
     await page.close();
   }
